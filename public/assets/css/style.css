@@ -6,3 +6,8 @@ body {
   font-family: 'Domine', serif;
   display: border-box;
 }
+
+.jumbotron {
+  opacity: .8;
+  border-radius: 5px;
+}
