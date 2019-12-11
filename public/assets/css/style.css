@@ -1,6 +1,8 @@
 
 body {
-  background: orange;
+  background: url('https://st.depositphotos.com/1005810/2521/i/950/depositphotos_25210439-stock-photo-stack-of-newspapers.jpg');
+  background-repeat: no-repeat; 
+  background-size: 100%;
   font-family: 'Domine', serif;
   display: border-box;
 }
