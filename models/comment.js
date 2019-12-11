@@ -1,13 +1,13 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-var Schema = mongoose.Schema
+const { Schema } = mongoose
 
-var CommentSchema = new Schema({
-	title: String,
-	body: String
+const CommentSchema = new Schema({
+  title: String,
+  body: String,
 })
 
-var Comment = mongoose.model('Comment', CommentSchema)
+const Comment = mongoose.model('Comment', CommentSchema)
 
 
 module.exports = Comment
