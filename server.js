@@ -4,9 +4,8 @@ var exphbs = require('express-handlebars')
 var mongoose = require('mongoose')
 var gradient = require('gradient-string')
 
-console.log(process.env.DB_USER)
 var PORT = process.env.PORT || 3000
-var MONGODB_URI = process.env.MONGODB_URI || `mongodb://${process.env.DB_USER}:${process.env.DB_Password}@ds253348.mlab.com:53348/heroku_15n1d69d`
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadline'
 
 mongoose.connect(MONGODB_URI)
 
