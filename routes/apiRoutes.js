@@ -17,7 +17,6 @@ module.exports = (app) => {
           .text()
         const link = urlPrefix + $(element).find('a').attr('href')
         const body = $(element).find('p').text()
-        console.log('body found', body)
         const result = {
           title,
           link,
@@ -28,7 +27,11 @@ module.exports = (app) => {
         if (title && link && body) {
           db.Article.create(result)
             .then((dbArticle) => {
-              console.log(dbArticle)
+              const data = {
+                articles: dbArticle
+              }
+              res.render('index', data)
+              // console.log(dbArticle)
             })
             .catch((err) => {
               console.log(err)
@@ -36,11 +39,7 @@ module.exports = (app) => {
         }
       })
     })
-    console.log(results)
-    res.render('index')
+    console.log(gradient.vice('Scraped'))
   })
 
-  app.post('/api/examples', (req, res) => res.render('index'))
-
-  app.delete('/api/examples/:id', (req, res) => res.render('index'))
 }

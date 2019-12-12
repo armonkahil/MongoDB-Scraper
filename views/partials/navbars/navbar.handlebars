@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-    <a class="navbar-brand" href="#"><i class="far fa-newspaper"></i> Mongo Scraper</a>
+    <a class="navbar-brand" href="/"><i class="far fa-newspaper"></i> Mongo Scraper</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,14 +10,15 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/saved">Saved</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link btn btn-warning btn-sm my-2 my-sm-0" id="scrape" href="/scrape">Scrape</a>
+        <li class="nav-item mx-2">
+          <span class="badge badge-warning"><a class="nav-link " id="scrape" href="/scrape">Scrape New Articles</a></span>  
         </li>
-       
+        <li class="nav-item mx-2">
+          <span class="badge badge-danger"><a class="nav-link " id="clear" href="/clear">Clear Articles</a></span> 
+        </li>
       </ul>
-      
     </div>
   </nav>

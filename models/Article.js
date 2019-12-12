@@ -21,7 +21,7 @@ const ArticleSchema = new Schema({
   comment: {
     type: Schema.Types.ObjectId,
     ref: 'Comment'
-  },
+  }
 })
 
 const Article = mongoose.model('Article', ArticleSchema)

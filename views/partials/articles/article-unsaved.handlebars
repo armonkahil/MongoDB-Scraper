@@ -1,10 +1,15 @@
-<li class="list-group-item">
-    <a href="{{this.link}}" target="_blank">
-      <h2>
-        {{title}}
-      </h2>
-      <p>
-        {{body}}
-      </p>
-      </a>
-</li>
+<div class="container-fluid my-5">
+  <div class="card font-effect-shadow-multiple">
+    <div class="card-header align-items-center">
+      <h4 class="float-left align-items-center">
+        <a href="{{this.link}}" class="" target="_blank"><i class="far fa-newspaper"></i> {{this.title}}</a>
+      </h4>
+      <button type="button" class="btn btn-primary btn-sm float-right comment align-items-center" data-toggle="modal"
+        data-target="#{{this.id}}">Save
+        Article</button>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{this.body}}</p>
+    </div>
+  </div>
+</div>

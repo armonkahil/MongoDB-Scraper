@@ -6,22 +6,32 @@ module.exports = (app) => {
   app.get('/', (req, res) => {
     db.Article.find({})
       .then((dbArticle) => {
-
-        console.log(dbArticle)
         const hbrsOBJ = {
-          articles: [dbArticle]
+          articles: dbArticle
         }
-        console.log('dherefadsfasdfadfadfasdf', hbrsOBJ)
+        console.log('This is the handlebars object being sent.', hbrsOBJ)
         res.render('index', hbrsOBJ)
+        console.log(gradient.summer('/ route rendered'))
       })
       .catch((err) => {
         res.json(err)
       })
   })
 
-
-  // Load example page and pass in an example by id
-  app.get('/example/:id', (req, res) => res.render('index'))
+  app.get('/saved', (req, res) => {
+    db.Article.find({})
+      .then((dbArticle) => {
+        const hbrsOBJ = {
+          articles: dbArticle
+        }
+        console.log('This is the handlebars object being sent.', hbrsOBJ)
+        res.render('saved', hbrsOBJ)
+        console.log(gradient.summer('/saved route rendered'))
+      })
+      .catch((err) => {
+        res.json(err)
+      })
+  })
 
   // Render 404 page for any unmatched routes
   app.get('*', (req, res) => res.render('404'))
