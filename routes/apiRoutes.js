@@ -12,9 +12,14 @@ module.exports = (app) => {
       const $ = cheerio.load(response.data)
       const results = []
       $('div.assetWrapper').each((i, element) => {
-        const title = $(element).find('h2').text()
+        const title = $(element)
+          .find('h2')
+          .text()
         // Save the text of the element in a "title" variable
-        const link = 'https://www.nytimes.com' + $(element).find('a').attr('href')
+        const link = 'https://www.nytimes.com'
+          + $(element)
+            .find('a')
+            .attr('href')
 
         results.push({ title, link })
       })
