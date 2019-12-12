@@ -41,5 +41,4 @@ module.exports = (app) => {
     })
     console.log(gradient.vice('Scraped'))
   })
-
 }
