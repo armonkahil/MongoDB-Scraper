@@ -4,7 +4,7 @@ const { Schema } = mongoose
 
 const CommentSchema = new Schema({
   title: String,
-  body: String,
+  body: String
 })
 
 const Comment = mongoose.model('Comment', CommentSchema)

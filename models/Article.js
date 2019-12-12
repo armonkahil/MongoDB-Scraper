@@ -5,15 +5,22 @@ const { Schema } = mongoose
 const ArticleSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   link: {
     type: String,
-    required: true,
+    required: true
   },
-  note: {
+  saved: {
+    type: Boolean,
+    default: false
+  },
+  body: {
+    type: String
+  },
+  comment: {
     type: Schema.Types.ObjectId,
-    ref: 'Comment',
+    ref: 'Comment'
   },
 })
 

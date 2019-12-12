@@ -9,8 +9,11 @@
   </div>
   <div class="row">
     <div class="container">
-      <div class="jumbotron jumbotron-fluid">
-       
+      <ol class="list-group font-effect-shadow-multiple">
+          {{#each articles}}
+            {{> articles/article-unsaved saved=false}}
+          {{/each}}
+        </ol>
       </div>
     </div>
   </div>
