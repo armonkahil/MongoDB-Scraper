@@ -1,18 +1,32 @@
-<div class="container container-fluid animated fadeIn"></div>
+<div class="container container-fluid animated fadeIn">
   <div class="row">
     <div class="container">
       <div class="jumbotron jumbotron-fluid font-effect-3d">
-        <h1 class = "text-center"><i class="far fa-newspaper"></i> Mongo Scraper</h1>
-        <h6 class = "text-center">New York Times Edition</h6>
+        <h1 class="text-center"><i class="far fa-newspaper"></i> Mongo Scraper</h1>
+        <h6 class="text-center">New York Times Edition</h6>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="container">
-          {{#each articles}}
-            {{> articles/article-unsaved}}
-          {{/each}}
-        
+      {{#each articles}}
+      {{> articles/article-unsaved}}
+      {{/each}}
+    </div>
+  </div>
+  <div class="modal fade" data-backdrop="static" id="scrapeModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-light">
+          <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-newspaper"></i> Mongo Scraper</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          Articles scraped!!!
+        </div>
       </div>
     </div>
   </div>

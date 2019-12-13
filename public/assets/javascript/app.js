@@ -12,13 +12,33 @@ $(document).ready(() => {
     })
   })
 
-  $('.clear').on('click', () => {
-    window.event.preventDefault()
-    console.log(this.id)
-    $.ajax('/api/clear', {
-      type: 'DELETE'
-    }).then(() => {
-      window.location.reload()
+  $('.clearArticles').on('click', () => {
+    $.get('/api/clear', (response) => {
+      console.log(response)
+      $('#modal-body').text('Articles Cleared!!')
+      $('#scrapeModal').modal('toggle')
+      $(document).on('click', () => {
+        window.location.reload(true)
+        $('#scrapeModal').modal('toggle')
+      })
+      console.log('articles cleared')
+    })
+  })
+
+  $('.scrapeArticles').on('click', () => {
+    $.get('/api/scrape', (response) => {
+      console.log(response)
+      $('#modal-body').text('Articles Scraped!!')
+      $('#scrapeModal').modal('toggle')
+      $(document).on('click', () => {
+        window.location.reload(true)
+        $('#scrapeModal').modal('toggle')
+      })
+      console.log('articles scraped')
+      // when modal is closed, reset form
     })
   })
 })
+// =============================================================================
+// Saved Modal Section
+// =============================================================================

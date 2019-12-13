@@ -4,6 +4,7 @@ const db = require('../models')
 
 module.exports = (app) => {
   app.get('/', (req, res) => {
+    console.log('the homepage route hit')
     db.Article.find({})
       .then((dbArticle) => {
         const hbrsOBJ = {

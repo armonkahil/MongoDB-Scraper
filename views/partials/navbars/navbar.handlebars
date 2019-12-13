@@ -1,24 +1,28 @@
 <nav class="navbar sticky-top navbar-expand-xl navbar-light bg-secondary">
-    <a class="navbar-brand" href="/"><i class="far fa-newspaper"></i> Mongo Scraper</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" href="/"><i class="far fa-newspaper"></i> Mongo Scraper</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/saved">Saved</a>
-        </li>
-        <li class="nav-item mx-2">
-          <span class="badge badge-warning"><a class="nav-link " id="scrape" href="/scrape"><i class="fas fa-snowplow"></i> Scrape New Articles</a></span>  
-        </li>
-        <li class="nav-item mx-2">
-          <span class="badge badge-danger"><a class="nav-link " id="clear" href="/clear"><i class="fas fa-trash"></i> Clear Articles</a></span> 
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!--Homepage Link-->
+      <li class="nav-item active">
+        <a class="btn btn-primary mx-1" href="/">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <!--Saved Articles page-->
+      <li class="nav-item active">
+        <a class="btn btn-primary mx-1" href="/saved" role="button">Saved</a>
+      </li>
+      <!--Scrape Button-->
+      <li class="nav-item mx-2">
+        <button  type="button" class="btn btn-danger scrapeArticles" href="#" role="button"><i class="fas fa-snowplow"></i> Scrape New Articles</button>
+      </li>
+      <!--Clear Articles link-->
+      <li class="nav-item mx-2">
+        <button type="button" class="btn btn-primary clearArticles" href="#" role="button"><i class="fas fa-trash"></i> Clear Articles</button>
+      </li>
+    </ul>
+  </div>
+</nav>
