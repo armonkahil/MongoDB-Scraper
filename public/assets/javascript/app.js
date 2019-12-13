@@ -1,6 +1,7 @@
 
 $(document).ready(() => {
   console.log('loaded')
+  // eslint-disable-next-line func-names
   $('.save').on('click', function () {
     const articleID = this.id
     console.log('Article Id to be saved', articleID)
@@ -14,11 +15,10 @@ $(document).ready(() => {
   $('.clear').on('click', () => {
     window.event.preventDefault()
     console.log(this.id)
-    $.ajax(`/api/clear`, {
+    $.ajax('/api/clear', {
       type: 'DELETE'
     }).then(() => {
       window.location.reload()
     })
   })
-
 })
