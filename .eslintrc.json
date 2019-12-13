@@ -21,6 +21,7 @@
     "rules": {
         "no-console":"off",
         "semi": ["error", "never"],
-        "comma-dangle": ["error", "never"]      
+        "comma-dangle": ["error", "never"],
+        "import/no-unresolved": 0      
     }
 }
