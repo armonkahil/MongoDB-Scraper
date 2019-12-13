@@ -57,6 +57,6 @@ module.exports = (app) => {
           }
         })
       })
-      res.render('index')
+    res.render('index')
   })
 }
