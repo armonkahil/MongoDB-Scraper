@@ -16,7 +16,7 @@ $(document).ready(() => {
     $.get('/api/clear', (response) => {
       console.log(response)
       $('#modal-body').text('Articles Cleared!!')
-      $('#scrapeModal').modal('toggle')
+      $('#scrapeModal').modal({ backdrop: false })
       $(document).on('click', () => {
         window.location.reload(true)
         $('#scrapeModal').modal('toggle')
@@ -29,7 +29,7 @@ $(document).ready(() => {
     $.get('/api/scrape', (response) => {
       console.log(response)
       $('#modal-body').text('Articles Scraped!!')
-      $('#scrapeModal').modal('toggle')
+      $('#scrapeModal').modal({backdrop: false })
       $(document).on('click', () => {
         window.location.reload(true)
         $('#scrapeModal').modal('toggle')
@@ -39,6 +39,16 @@ $(document).ready(() => {
     })
   })
 })
+// =============================================================================
+// Unsaved article
+// =============================================================================
+
+
+
+
+
+
+
 // =============================================================================
 // Saved Modal Section
 // =============================================================================

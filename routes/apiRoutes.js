@@ -15,9 +15,7 @@ module.exports = (app) => {
       const $ = cheerio.load(response.data)
 
       $('div.assetWrapper').each((i, element) => {
-        const title = $(element)
-          .find('h2')
-          .text()
+        const title = $(element).find('h2').text()
         const link = urlPrefix + $(element).find('a').attr('href')
         const body = $(element).find('p').text()
         const result = {
@@ -63,21 +61,23 @@ module.exports = (app) => {
   })
 
   app.put('/api/save/:id', (req, res) => {
-    db.Article.remove({}, (err) => {
+    let savedID = req.params.id
+    db.Article.findByIdAndUpdate({savedID}, {$set: {saved:true}}, (err) => {
       if (err) {
         console.log(err)
       } else {
-        console.log(gradient.vice('articles cleared'))
+        console.log(gradient.vice('articles saved'))
       }
     })
       .then(() => {
-        db.Comment.remove({}, (err) => {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log(gradient.vice('comments cleared'))
-          }
-        })
+        // Comment part
+        // db.Comment.remove({}, (err) => {
+        //   if (err) {
+        //     console.log(err)
+        //   } else {
+        //     console.log(gradient.vice('comments cleared'))
+        //   }
+        //})
       })
     res.render('index')
   })
