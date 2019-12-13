@@ -42,3 +42,10 @@ $(document).ready(() => {
 // =============================================================================
 // Saved Modal Section
 // =============================================================================
+// eslint-disable-next-line func-names
+$('.comment').on('click', function () {
+  const targetID = `#${this.value}`
+  $(targetID).modal({
+    backdrop: false
+  })
+})
