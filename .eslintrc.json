@@ -13,6 +13,7 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
         "document":"readonly"
+        
     },
     "parserOptions": {
         "ecmaVersion": 2019
@@ -20,6 +21,6 @@
     "rules": {
         "no-console":"off",
         "semi": ["error", "never"],
-        "comma-dangle": ["error", "never"]
+        "comma-dangle": ["error", "never"]      
     }
 }

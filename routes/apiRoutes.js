@@ -31,7 +31,6 @@ module.exports = (app) => {
                 articles: dbArticle
               }
               res.render('index', data)
-              // console.log(dbArticle)
             })
             .catch((err) => {
               console.log(err)
@@ -40,5 +39,24 @@ module.exports = (app) => {
       })
     })
     console.log(gradient.vice('Scraped'))
+  })
+  app.get('/clear', (req, res) => {
+    db.Article.remove({}, (err) => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(gradient.vice('articles cleared'))
+      }
+    })
+      .then(() => {
+        db.Comment.remove({}, (err) => {
+          if (err) {
+            console.log(err)
+          } else {
+            console.log(gradient.vice('comments cleared'))
+          }
+        })
+      })
+      res.render('index')
   })
 }
