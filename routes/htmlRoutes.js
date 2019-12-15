@@ -3,6 +3,9 @@ const gradient = require('gradient-string')
 const db = require('../models')
 
 module.exports = (app) => {
+  // ===========================================================================
+  // Find all articles
+  // ===========================================================================
   app.get('/', (req, res) => {
     console.log('the homepage route hit')
     db.Article.find({})
@@ -18,7 +21,9 @@ module.exports = (app) => {
         res.json(err)
       })
   })
-
+  // =============================================================================
+  // Find all articles
+  // =============================================================================
   app.get('/saved', (req, res) => {
     db.Article.find({})
       .then((dbArticle) => {

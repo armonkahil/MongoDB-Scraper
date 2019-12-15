@@ -56,7 +56,7 @@ $('.comment').on('click', function () {
   const commentID = `.addComment${articleID}`
   const targetID = `#comment${this.value}`
   $(targetID).modal({ backdrop: false, focus: true })
-  $.get('/api/comments/articleID', (response) => {
+  $.get(`/api/comments/${articleID}`, (response) => {
     console.log(response)
   })
   $(commentID).on('click', () => {

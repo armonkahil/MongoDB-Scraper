@@ -95,15 +95,16 @@ module.exports = (app) => {
   // Get an article and pull its comments
   // ===========================================================================
   app.get('/api/comments/:id', (req, res) => {
-    console.log('Gea an article and populate it comments route hit')
+    console.log('Get an article and populate it comments route hit')
     const savedID = req.params.id
     console.log('Id to be saved', savedID)
-    db.Article.findOneAndUpdate({ _id: savedID }, { $set: { saved: true } })
+    db.Article.findOne({ _id: savedID })
       .populate('comments')
-      .then((dbComments) => {
-        console.log('these are the comments found', dbComments)
+      .then((dbArticle) => {
+        console.log('these are the comments found', dbArticle)
         const handObj = {
-          comments: dbComments
+          article: dbArticle,
+          comments: dbArticle.comments
         }
         res.render('partials/modals/comments', handObj)
       })
@@ -118,13 +119,18 @@ module.exports = (app) => {
   app.post('/api/comments/', (req, res) => {
     console.log(req.body)
     const { articleID, ...newComment } = req.body
-    db.Comment.create(req.body)
+    console.log('this is the new', newComment)
+    db.Comment.create(newComment)
       .then((dbComment) => {
         console.log('This is the comment created', dbComment)
         return db.Article.findOneAndUpdate({ _id: articleID },
-          { $push: { comments: newComment } }, { new: true })
+          { $push: { comments: dbComment._id } }, { new: true })
           .then((dbArticle) => {
-            res.sendStatus(200)
+            const hbrsOBJ = {
+              articles: dbArticle,
+              comments: dbArticle.comments
+            }
+            res.render('partials/modals/comments', hbrsOBJ)
             console.log('This is dbArticle', dbArticle)
           })
           .catch((err) => {

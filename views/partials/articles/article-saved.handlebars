@@ -38,15 +38,10 @@
         <div class="col float-left">
           <h4 class="modal-header" >Comments</h4>
           <ul>
-            {{#if this.comments }}
-            <li>
-              <p>No comments left</p>
-            </li>
-            {{else}}
-            {{#each this.comments}}
-            <li>{{this.comments}}</li>
+            {{#each comments}}
+            {{> modals/comments}}
             {{/each}}
-            {{/if}}
+
           </ul>
         </div>
           

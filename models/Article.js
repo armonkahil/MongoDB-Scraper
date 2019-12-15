@@ -16,7 +16,8 @@ const ArticleSchema = new Schema({
     default: false
   },
   body: {
-    type: String
+    type: String,
+    required: true
   },
   comments: [
     {
