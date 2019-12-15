@@ -29,9 +29,13 @@
           </div>
           <div class="modal-body ">
             <ul>
+              {{#if this.comment.length = 0 }}
+              <li><p>No comments left</p></li>
+              {{else}}
               {{#each this.comment}}
               <li>{{this.comment}}</li>
               {{/each}}
+              {{/if}}
             </ul>
             <form>
           <div class="form-group">
