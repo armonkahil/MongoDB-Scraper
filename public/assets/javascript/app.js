@@ -56,6 +56,7 @@ $('.comment').on('click', function () {
   const commentID = `.addComment${articleID}`
   const targetID = `#comment${this.value}`
   $(targetID).modal({ backdrop: false, focus: true })
+  // populate route
   $.get(`/api/comments/${articleID}`, (response) => {
     console.log(response)
   })

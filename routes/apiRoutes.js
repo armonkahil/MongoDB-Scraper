@@ -100,13 +100,11 @@ module.exports = (app) => {
     console.log('Id to be saved', savedID)
     db.Article.findOne({ _id: savedID })
       .populate('comments')
-      .then((dbArticle) => {
-        console.log('these are the comments found', dbArticle)
-        const handObj = {
-          article: dbArticle,
-          comments: dbArticle.comments
-        }
-        res.render('partials/modals/comments', handObj)
+      .then((dbComments) => {
+        console.log('these are the comments found', dbComments)
+
+        console.log(JSON.stringify(dbComments, null, 2))
+        res.render('partials/modals/comments', dbComments)
       })
       .catch((err) => {
         res.json(err)

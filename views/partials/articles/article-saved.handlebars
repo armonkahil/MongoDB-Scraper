@@ -37,8 +37,8 @@
      
         <div class="col float-left">
           <h4 class="modal-header" >Comments</h4>
-          <ul>
-            {{#each comments}}
+          <ul class = "list-group">
+            {{#each this.comments}}
             {{> modals/comments}}
             {{/each}}
 

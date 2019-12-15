@@ -25,7 +25,7 @@ module.exports = (app) => {
   // Find all articles
   // =============================================================================
   app.get('/saved', (req, res) => {
-    db.Article.find({})
+    db.Article.find({}).populate('comments')
       .then((dbArticle) => {
         const hbrsOBJ = {
           articles: dbArticle
