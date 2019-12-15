@@ -5,7 +5,7 @@ $(document).ready(() => {
   $('.save').on('click', function () {
     const articleID = this.id
     console.log('Article Id to be saved', articleID)
-    $.get(`/api/save/${articleID}`).then(() => {
+    $.post(`/api/save/${articleID}`).then(() => {
       $(`.unsaved${articleID}`).hide(1000)
     })
   })
@@ -52,6 +52,21 @@ $(document).ready(() => {
 // =============================================================================
 // eslint-disable-next-line func-names
 $('.comment').on('click', function () {
+  const articleID = this.value
+  const commentID = `.addComment${articleID}`
   const targetID = `#comment${this.value}`
   $(targetID).modal({ backdrop: false, focus: true })
+  $.get('/api/comments/articleID', (response) => {
+    console.log(response)
+  })
+  $(commentID).on('click', () => {
+    const title = $(`#title${articleID}`).val().trim()
+    const body = $(`#message${articleID}`).val().trim()
+    console.log(body, title)
+    if (body && title) {
+      $.post('/api/comments/', { articleID, body, title }, (data, status) => {
+        console.log(data, status)
+      })
+    }
+  })
 })

@@ -14,9 +14,9 @@ body {
 }
 .modalComment {
   z-index: 1;
-  margin-top: 20%;
+  margin: auto
 }
 .modal {
   z-index: 1;
-  margin-top: 20%;
+  /* margin-top: 20%; */
 }

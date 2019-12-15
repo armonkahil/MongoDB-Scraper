@@ -18,10 +18,12 @@ const ArticleSchema = new Schema({
   body: {
     type: String
   },
-  comment: {
-    type: Schema.Types.ObjectId,
-    ref: 'Comment'
-  }
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ]
 })
 
 const Article = mongoose.model('Article', ArticleSchema)

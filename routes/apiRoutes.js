@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const gradient = require('gradient-string')
 const axios = require('axios')
 const cheerio = require('cheerio')
@@ -6,18 +7,27 @@ const db = require('../models')
 const urlPrefix = 'https://www.nytimes.com'
 
 module.exports = (app) => {
+  // ===========================================================================
+  // Scrape Route
+  // ===========================================================================
   app.get('/api/scrape', (req, res) => {
     console.log('scrape route hit')
     const results = []
-
     const saved = false
     axios.get('https://nytimes.com/').then((response) => {
       const $ = cheerio.load(response.data)
 
       $('div.assetWrapper').each((i, element) => {
-        const title = $(element).find('h2').text()
-        const link = urlPrefix + $(element).find('a').attr('href')
-        const body = $(element).find('p').text()
+        const title = $(element)
+          .find('h2')
+          .text()
+        const link = urlPrefix
+          + $(element)
+            .find('a')
+            .attr('href')
+        const body = $(element)
+          .find('p')
+          .text()
         const result = {
           title,
           link,
@@ -40,35 +50,86 @@ module.exports = (app) => {
     res.sendStatus(200)
   })
 
+  // =============================================================================
+  // Clear Database route
+  // =============================================================================
+
   app.get('/api/clear', (req, res) => {
+    console.log('clear route hit', req.params)
     db.Article.deleteMany({}, (err) => {
       if (err) {
         console.log(err)
       } else {
         console.log(gradient.vice('articles cleared'))
       }
-    })
-      .then(() => {
-        db.Comment.deleteMany({}, (err) => {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log(gradient.vice('comments cleared'))
-          }
-        })
-        res.sendStatus(200)
+    }).then(() => {
+      db.Comment.deleteMany({}, (err) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(gradient.vice('comments cleared'))
+        }
       })
+      res.sendStatus(200)
+    })
   })
-  app.get('/api/save/:id', (req, res) => {
+
+  // ===========================================================================
+  // Save an article
+  // ===========================================================================
+  app.post('/api/save/:id', (req, res) => {
     console.log('save route hit')
     const savedID = req.params.id
     console.log('Id to be saved', savedID)
     db.Article.findOneAndUpdate({ _id: savedID }, { $set: { saved: true } })
-      .populate('comment').then((dbArticle) => {
-        console.log(dbArticle)
+      .then((dbArticle) => {
+        console.log('Article saved', dbArticle)
         res.sendStatus(200)
-      }).catch((err) => {
+      })
+      .catch((err) => {
         res.json(err)
+      })
+  })
+
+  // ===========================================================================
+  // Get an article and pull its comments
+  // ===========================================================================
+  app.get('/api/comments/:id', (req, res) => {
+    console.log('Gea an article and populate it comments route hit')
+    const savedID = req.params.id
+    console.log('Id to be saved', savedID)
+    db.Article.findOneAndUpdate({ _id: savedID }, { $set: { saved: true } })
+      .populate('comments')
+      .then((dbComments) => {
+        console.log('these are the comments found', dbComments)
+        const handObj = {
+          comments: dbComments
+        }
+        res.render('partials/modals/comments', handObj)
+      })
+      .catch((err) => {
+        res.json(err)
+      })
+  })
+
+  // =============================================================================
+  //  Create a comment and add it to the article.
+  // =============================================================================
+  app.post('/api/comments/', (req, res) => {
+    console.log(req.body)
+    const { articleID, ...newComment } = req.body
+    db.Comment.create(req.body)
+      .then((dbComment) => {
+        console.log('This is the comment created', dbComment)
+        return db.Article.findOneAndUpdate({ _id: articleID },
+          { $push: { comments: newComment } }, { new: true })
+          .then((dbArticle) => {
+            res.sendStatus(200)
+            console.log('This is dbArticle', dbArticle)
+          })
+          .catch((err) => {
+            res.json(err)
+          })
       })
   })
 }
