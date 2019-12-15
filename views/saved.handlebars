@@ -1,19 +1,21 @@
-<div class="container container-fluid animated fadeIn"></div>
-  <div class="row">
-    <div class="container">
-      <div class="jumbotron jumbotron-fluid font-effect-3d">
-        <h1 class = "text-center"><i class="far fa-newspaper"></i> Mongo Scraper</h1>
-        <h6 class = "text-center">New York Times Edition</h6>
-        <h6 class = "text-center">Saved Articles</h6>
-      </div>
+<div class="container container-fluid animated fadeIn saved{{this.id}}"></div>
+<div class="row">
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid font-effect-3d">
+      <h1 class="text-center"><i class="far fa-newspaper"></i> Mongo Scraper</h1>
+      <h6 class="text-center">New York Times Edition</h6>
+      <h2 class="text-center">Saved Articles</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="container">
-          {{#each articles}}
-            {{> articles/article-saved}}
-          {{/each}}
-      </div>
-    </div>
+</div>
+<div class="row">
+  <div class="container">
+    {{#each articles}}
+    {{#if saved}}
+    {{> articles/article-saved}}
+    {{/if}}
+    {{/each}}
   </div>
+</div>
+</div>
 </div>

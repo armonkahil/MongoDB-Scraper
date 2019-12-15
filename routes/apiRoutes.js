@@ -59,26 +59,16 @@ module.exports = (app) => {
         res.sendStatus(200)
       })
   })
-
-  app.put('/api/save/:id', (req, res) => {
-    let savedID = req.params.id
-    db.Article.findByIdAndUpdate({savedID}, {$set: {saved:true}}, (err) => {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log(gradient.vice('articles saved'))
-      }
-    })
-      .then(() => {
-        // Comment part
-        // db.Comment.remove({}, (err) => {
-        //   if (err) {
-        //     console.log(err)
-        //   } else {
-        //     console.log(gradient.vice('comments cleared'))
-        //   }
-        //})
+  app.get('/api/save/:id', (req, res) => {
+    console.log('save route hit')
+    const savedID = req.params.id
+    console.log('Id to be saved', savedID)
+    db.Article.findOneAndUpdate({ _id: savedID }, { $set: { saved: true } })
+      .populate('comment').then((dbArticle) => {
+        console.log(dbArticle)
+        res.sendStatus(200)
+      }).catch((err) => {
+        res.json(err)
       })
-    res.render('index')
   })
 }

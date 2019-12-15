@@ -5,10 +5,8 @@ $(document).ready(() => {
   $('.save').on('click', function () {
     const articleID = this.id
     console.log('Article Id to be saved', articleID)
-    $.ajax(`/api/save/${articleID}`, {
-      type: 'PUT'
-    }).then(() => {
-      $(`#${articleID}`).addClass('fadeOut')
+    $.get(`/api/save/${articleID}`).then(() => {
+      $(`.unsaved${articleID}`).hide(1000)
     })
   })
 
@@ -19,7 +17,7 @@ $(document).ready(() => {
       $('#scrapeModal').modal({ backdrop: false })
       $(document).on('click', () => {
         window.location.reload(true)
-        $('#scrapeModal').modal('toggle')
+        $('#scrapeModal').modal({ backdrop: false })
       })
       console.log('articles cleared')
     })
@@ -29,10 +27,10 @@ $(document).ready(() => {
     $.get('/api/scrape', (response) => {
       console.log(response)
       $('#modal-body').text('Articles Scraped!!')
-      $('#scrapeModal').modal({backdrop: false })
+      $('#scrapeModal').modal({ backdrop: false })
       $(document).on('click', () => {
         window.location.reload(true)
-        $('#scrapeModal').modal('toggle')
+        $('#scrapeModal').modal({ backdrop: false })
       })
       console.log('articles scraped')
       // when modal is closed, reset form
@@ -54,8 +52,6 @@ $(document).ready(() => {
 // =============================================================================
 // eslint-disable-next-line func-names
 $('.comment').on('click', function () {
-  const targetID = `#${this.value}`
-  $(targetID).modal({
-    backdrop: false
-  })
+  const targetID = `#comment${this.value}`
+  $(targetID).modal({ backdrop: false, focus: true })
 })
