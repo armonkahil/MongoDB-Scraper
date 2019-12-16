@@ -16,8 +16,6 @@ module.exports = (app) => {
       .populate('comments')
       .then((dbComments) => {
         console.log(gradient.summer('these are the comments found', dbComments))
-
-        console.log(JSON.stringify(dbComments, null, 2))
         res.render('partials/modals/comments', dbComments)
       })
       .catch((err) => {
@@ -42,7 +40,7 @@ module.exports = (app) => {
               articles: dbArticle,
               comments: dbArticle.comments
             }
-            res.render('partials/modals/comments', hbrsOBJ)
+            res.render('partials/modals/comments', dbArticle.comments)
             console.log('This is dbArticle', dbArticle)
           })
           .catch((err) => {
@@ -50,22 +48,20 @@ module.exports = (app) => {
           })
       })
   })
+
   // ===========================================================================
   // Delete a comment from an article
   // ===========================================================================
   app.get('/api/comments/delete/:id', (req, res) => {
     const targetId = req.params.id
     db.Comment.findOneAndDelete({ _id: targetId },
-      (error, removed) => {
-        // Log any errors from mongojs
+      (error, result) => {
         if (error) {
           console.log(error)
           res.send(error)
         } else {
-          // Otherwise, send the mongojs response to the browser
-          // This will fire off the success function of the ajax request
-          console.log(removed)
-          res.send(removed)
+          console.log(result)
+          res.send(result)
         }
       })
   })

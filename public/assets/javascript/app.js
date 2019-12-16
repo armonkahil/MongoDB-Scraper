@@ -58,7 +58,7 @@ $(document).ready(() => {
     $.get(`/api/comments/${articleID}`, (response) => {
       console.log(response)
     })
-
+    // add a comment
     $(commentID).on('click', () => {
       const title = $(`#title${articleID}`).val().trim()
       const body = $(`#message${articleID}`).val().trim()
@@ -66,6 +66,7 @@ $(document).ready(() => {
       if (body && title) {
         $.post('/api/comments/', { articleID, body, title }, (data, status) => {
           console.log(data, status)
+          alert('Comment added')
         })
       }
     })
