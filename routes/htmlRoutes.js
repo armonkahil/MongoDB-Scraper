@@ -38,5 +38,5 @@ module.exports = (app) => {
   })
 
   // Render 404 page for any unmatched routes
-  app.get('*', (req, res) => res.render('404'))
+  app.get('*', (req, res) => res.redirect('/'))
 }
