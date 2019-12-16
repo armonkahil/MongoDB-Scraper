@@ -11,7 +11,6 @@ module.exports = (app) => {
   // Scrape Route
   // ===========================================================================
   app.get('/api/scrape', (req, res) => {
-    console.log('scrape route hit')
     const results = []
     const saved = false
     axios.get('https://nytimes.com/').then((response) => {
@@ -80,7 +79,6 @@ module.exports = (app) => {
   app.post('/api/save/:id', (req, res) => {
     console.log('save route hit')
     const savedID = req.params.id
-    console.log('Id to be saved', savedID)
     db.Article.findOneAndUpdate({ _id: savedID }, { $set: { saved: true } })
       .then((dbArticle) => {
         console.log('Article saved', dbArticle)

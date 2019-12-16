@@ -1,7 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable linebreak-style */
-const gradient = require('gradient-string')
 const db = require('../models')
 
 module.exports = (app) => {
@@ -15,7 +14,6 @@ module.exports = (app) => {
     db.Article.findOne({ _id: savedID })
       .populate('comments')
       .then((dbComments) => {
-        console.log(gradient.summer('these are the comments found', dbComments))
         res.render('partials/modals/comments', dbComments)
       })
       .catch((err) => {
@@ -41,7 +39,6 @@ module.exports = (app) => {
               comments: dbArticle.comments
             }
             res.render('partials/modals/comments', hbrsOBJ)
-            console.log('This is dbArticle', dbArticle)
           })
           .catch((err) => {
             res.json(err)

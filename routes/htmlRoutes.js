@@ -30,9 +30,7 @@ module.exports = (app) => {
         const hbrsOBJ = {
           articles: dbArticle
         }
-        console.log('This is the handlebars object being sent.', hbrsOBJ)
         res.render('saved', hbrsOBJ)
-        console.log(gradient.summer('/saved route rendered'))
       })
       .catch((err) => {
         res.json(err)
