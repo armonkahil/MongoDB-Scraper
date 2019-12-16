@@ -66,7 +66,7 @@ $(document).ready(() => {
       if (body && title) {
         $.post('/api/comments/', { articleID, body, title }, (data, status) => {
           console.log(data, status)
-          alert('Comment added')
+          window.location.reload()
         })
       }
     })
