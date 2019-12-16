@@ -40,7 +40,7 @@ module.exports = (app) => {
               articles: dbArticle,
               comments: dbArticle.comments
             }
-            res.render('partials/modals/comments', dbArticle.comments)
+            res.render('partials/modals/comments', hbrsOBJ)
             console.log('This is dbArticle', dbArticle)
           })
           .catch((err) => {
