@@ -1,7 +1,9 @@
-<li class="list-group-item display-block">
-  <small class = "float-left">Title:{{title}}</small>
-  <small class = "float-left">Body: {{this.body}}</small>
-  <small class = "float-left">this: {{this.comments}}</small>
-<button type="button" class="btn btn-danger btn-sm float-right delete align-items-center mx-2"
+<li class="list-group-item-action display-block deleteThis{{this.id}}">
+  <div>
+  <small class = "float-left">Title: {{title}}</small><br>
+  <small class = "float-left">Comment: {{body}}</small>
+
+  </div>
+<button type="button" class="btn btn-danger btn-sm float-right deleteComment align-items-center mx-2"
         value={{this._id}}><i class="fas fa-trash"></i> Delete</button>
   </li>

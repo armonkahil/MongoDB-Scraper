@@ -36,38 +36,52 @@ $(document).ready(() => {
       // when modal is closed, reset form
     })
   })
-})
-// =============================================================================
-// Unsaved article
-// =============================================================================
-//
-//
-//
-//
-//
-//
-//
-// =============================================================================
-// Saved Modal Section
-// =============================================================================
-// eslint-disable-next-line func-names
-$('.comment').on('click', function () {
-  const articleID = this.value
-  const commentID = `.addComment${articleID}`
-  const targetID = `#comment${this.value}`
-  $(targetID).modal({ backdrop: false, focus: true })
-  // populate route
-  $.get(`/api/comments/${articleID}`, (response) => {
-    console.log(response)
+  // =============================================================================
+  // Unsaved article
+  // =============================================================================
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  // =============================================================================
+  // Saved Modal Section
+  // =============================================================================
+  // eslint-disable-next-line func-names
+  $('.comment').on('click', function () {
+    const articleID = this.value
+    const commentID = `.addComment${articleID}`
+    const targetID = `#comment${this.value}`
+    $(targetID).modal({ backdrop: false, focus: true })
+    // populate route
+    $.get(`/api/comments/${articleID}`, (response) => {
+      console.log(response)
+    })
+
+    $(commentID).on('click', () => {
+      const title = $(`#title${articleID}`).val().trim()
+      const body = $(`#message${articleID}`).val().trim()
+      console.log(body, title)
+      if (body && title) {
+        $.post('/api/comments/', { articleID, body, title }, (data, status) => {
+          console.log(data, status)
+        })
+      }
+    })
   })
-  $(commentID).on('click', () => {
-    const title = $(`#title${articleID}`).val().trim()
-    const body = $(`#message${articleID}`).val().trim()
-    console.log(body, title)
-    if (body && title) {
-      $.post('/api/comments/', { articleID, body, title }, (data, status) => {
-        console.log(data, status)
-      })
-    }
+  // ===========================================================================
+  // delete comment from modal
+  // ===========================================================================
+
+  // eslint-disable-next-line func-names
+  $('.deleteComment').on('click', function () {
+    const deleteCommentId = this.value
+    console.log('Comment to be deleted', deleteCommentId)
+    $.get(`/api/comments/delete/${deleteCommentId}`, (response) => {
+      console.log(response)
+      $(`.deleteThis${deleteCommentId}`).hide(1000)
+    })
   })
 })
