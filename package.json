@@ -1,7 +1,9 @@
 {
   "name": "mongodb-scraper",
   "version": "1.0.0",
-  "engines": "12.13.0",
+  "engines": {
+    "node":"12.13.0"
+  },
   "description": "mongoDB assignment",
   "main": "server.js",
   "scripts": {
