@@ -7,7 +7,7 @@ require('./models')
 
 const PORT = process.env.PORT || 3000
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadlines'
-
+// Mongoose Deprecation warnings disabled
 mongoose.set('useNewUrlParser', true)
 mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
