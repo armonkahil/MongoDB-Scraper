@@ -56,18 +56,10 @@ module.exports = (app) => {
   app.get('/api/clear', (req, res) => {
     console.log('clear route hit', req.params)
     db.Article.deleteMany({}, (err) => {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log(gradient.vice('articles cleared'))
-      }
+      console.log(err || gradient.vice('articles cleared truthy style'))
     }).then(() => {
       db.Comment.deleteMany({}, (err) => {
-        if (err) {
-          console.log(err)
-        } else {
-          console.log(gradient.vice('comments cleared'))
-        }
+        console.log(err || gradient.vice('comments cleared truthy style'))
       })
       res.sendStatus(200)
     })
