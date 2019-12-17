@@ -31,8 +31,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "gradient-string": "^1.2.0",
-    "mongoose": "^5.8.1",
-    "npm": "^3.9.0"
+    "mongoose": "^5.8.1"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
