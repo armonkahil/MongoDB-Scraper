@@ -2,7 +2,7 @@
 const gradient = require('gradient-string')
 const axios = require('axios')
 const cheerio = require('cheerio')
-const db = require('../models')
+const db = require('../models/Index')
 
 const urlPrefix = 'https://www.nytimes.com'
 

@@ -1,6 +1,6 @@
 // Require all models
 const gradient = require('gradient-string')
-const db = require('../models')
+const db = require('../models/Index')
 
 module.exports = (app) => {
   // ===========================================================================

@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable linebreak-style */
-const db = require('../models')
+const db = require('../models/Index')
 
 module.exports = (app) => {
 // ===========================================================================
