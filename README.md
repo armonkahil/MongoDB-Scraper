@@ -4,7 +4,7 @@ ___
 
 Welcome to **MongoDB-Scraper**. 
 
-This is a JavaScript App that scrapes the New York Times website. The app allows the user to scrape the latest headlines into a database. The user can then save to those articles and add comments. If articles were already saved, the user can see the all the comments left by other users. This app is currently deployed to Heroku.
+This is a JavaScript App that scrapes the New York Times website for data. The app allows the user to scrape the latest headlines into a database. The user can then save selected articles to another database and add comments. If articles were already saved, the user can see the all the comments left by other users. This app is currently deployed to Heroku.
 # Instructions
 1. Fork or clone this repo.
 ```
@@ -34,3 +34,5 @@ node server.js
 - [Chai](https://www.chaijs.com/)
 - [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
+## Live Demo
+![Live Demo](public/assets/images/LiveDemo.gif)
