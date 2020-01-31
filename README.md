@@ -34,5 +34,5 @@ node server.js
 - [Chai](https://www.chaijs.com/)
 - [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
-## Live Demo
+### [Live Demo hosted on Heroku](https://stark-dusk-28801.herokuapp.com/)
 ![Live Demo](public/assets/images/LiveDemo.gif)
